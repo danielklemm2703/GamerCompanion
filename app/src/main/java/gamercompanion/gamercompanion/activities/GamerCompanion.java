@@ -1,9 +1,11 @@
-package gamercompanion.gamercompanion;
+package gamercompanion.gamercompanion.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import gamercompanion.gamercompanion.R;
 
 
 public class GamerCompanion extends Activity {

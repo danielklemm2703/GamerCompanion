@@ -1,4 +1,4 @@
-package gamercompanion.gamercompanion.utils;
+package gamercompanion.src.utils.tryUtil;
 
 import android.support.annotation.Nullable;
 

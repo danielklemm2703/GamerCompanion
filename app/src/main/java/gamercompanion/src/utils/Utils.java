@@ -1,4 +1,4 @@
-package gamercompanion.gamercompanion.utils;
+package gamercompanion.src.utils;
 
 import android.view.View;
 import android.widget.RelativeLayout;

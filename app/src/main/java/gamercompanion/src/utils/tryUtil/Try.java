@@ -1,4 +1,5 @@
-package gamercompanion.gamercompanion.utils;
+package gamercompanion.src.utils.tryUtil;
+
 
 import android.support.annotation.Nullable;
 
@@ -8,6 +9,7 @@ import com.google.common.collect.AbstractIterator;
 
 import java.io.Serializable;
 import java.util.Iterator;
+
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

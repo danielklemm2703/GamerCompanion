@@ -1,4 +1,4 @@
-package gamercompanion.gamercompanion.utils;
+package gamercompanion.src.activities.controlling;
 
 import android.app.Activity;
 import android.content.Context;

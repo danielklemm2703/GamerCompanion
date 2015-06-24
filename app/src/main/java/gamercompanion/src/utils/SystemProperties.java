@@ -1,4 +1,4 @@
-package gamercompanion.gamercompanion.utils; /**
+package gamercompanion.src.utils; /**
  * Created by Zapdos on 16.06.2015.
  */
 
@@ -12,10 +12,12 @@ import com.google.common.collect.ImmutableMap;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.security.spec.InvalidKeySpecException;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicReference;
+
+import gamercompanion.src.activities.controlling.ActivityController;
+import gamercompanion.src.utils.tryUtil.Try;
 
 /**
  * provides properties as an immutable map
@@ -63,6 +65,7 @@ public final class SystemProperties {
         {
             return toImmutableMap(properties.get());
         }
+        //TODO Error class should handle this
         System.err.println(properties.failure().toString());
         return toImmutableMap(new Properties());
     }
@@ -87,6 +90,7 @@ public final class SystemProperties {
     }
 
     private static ImmutableMap<String, String> toImmutableMap(final Properties properties) {
+        ImmutableMap.copyOf(properties);
         ImmutableMap.Builder<String, String> b = ImmutableMap.builder();
         for (Map.Entry<Object, Object> e : properties.entrySet()) {
             b.put(e.getKey().toString(), e.getValue().toString());

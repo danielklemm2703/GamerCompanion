@@ -1,4 +1,4 @@
-package gamercompanion.src.userInterface;
+package gamercompanion.src.userInterface.interfaceTools;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;

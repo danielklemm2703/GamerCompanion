@@ -35,16 +35,8 @@ public class GamerCompanion extends ControlledActivity {
         relativeLayout.addView(_listView);
 
         //Draw all activated plugins from the system.properties as a List
-        ImmutableCollection<Plugin> activatedPlugins = PluginOperator.getActivatedPlugins();
-        final FluentIterable<String> pluginTitles = FluentIterable.from(activatedPlugins).transform(new Function<Plugin, String>() {
-            @Override
-            public String apply(Plugin input) {
-                return input.get_pluginName();
-            }
-        });
-
         StableArrayAdapter listAdapter = new StableArrayAdapter(this,
-                android.R.layout.simple_list_item_1, pluginTitles.toList());
+                android.R.layout.simple_list_item_1, PluginOperator.activatedPluginNames().toList());
         _listView.setAdapter(listAdapter);
         _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

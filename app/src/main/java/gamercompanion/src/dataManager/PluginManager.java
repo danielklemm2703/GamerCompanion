@@ -4,15 +4,13 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableCollection;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Iterables;
 
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicReference;
 
-import gamercompanion.src.dataObjects.Plugin;
+import gamercompanion.src.dataObjects.plugin.Plugin;
 import gamercompanion.src.utils.SystemProperties;
 
 /**

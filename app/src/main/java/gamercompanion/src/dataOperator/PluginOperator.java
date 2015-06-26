@@ -3,10 +3,9 @@ package gamercompanion.src.dataOperator;
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableCollection;
-import com.google.common.collect.ImmutableList;
 
 import gamercompanion.src.dataManager.PluginManager;
-import gamercompanion.src.dataObjects.Plugin;
+import gamercompanion.src.dataObjects.plugin.Plugin;
 
 /**
  * Created by dklemm on 26.06.15.

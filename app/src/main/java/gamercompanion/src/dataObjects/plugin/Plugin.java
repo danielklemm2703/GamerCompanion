@@ -1,4 +1,4 @@
-package gamercompanion.src.dataObjects;
+package gamercompanion.src.dataObjects.plugin;
 
 /**
  * Created by dklemm on 24.06.15.

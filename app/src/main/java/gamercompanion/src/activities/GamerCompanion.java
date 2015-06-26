@@ -3,14 +3,15 @@ package gamercompanion.src.activities;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 
 import gamercompanion.gamercompanion.R;
 import gamercompanion.src.activities.controlling.ControlledActivity;
-import gamercompanion.src.dataManager.DataManager;
 import gamercompanion.src.dataObjects.Plugin;
+import gamercompanion.src.dataOperator.PluginOperator;
 import gamercompanion.src.userInterface.StableArrayAdapter;
 
 
@@ -23,12 +24,12 @@ public class GamerCompanion extends ControlledActivity {
         super.onCreate(savedInstanceState);
 
         //Draw all activated plugins from the system.properties as a List
-        ImmutableList<Plugin> activatedPlugins = DataManager.getActivatedPlugins();
+        ImmutableCollection<Plugin> activatedPlugins = PluginOperator.getActivatedPlugins();
         //TODO refactor transform
         ArrayList<String> inputList = new ArrayList<String>();
         for(Plugin item : activatedPlugins)
         {
-            inputList.add(item.toString());
+            inputList.add(item.get_title());
         }
 
         StableArrayAdapter listAdapter = new StableArrayAdapter(this,

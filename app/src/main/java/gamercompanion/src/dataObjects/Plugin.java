@@ -5,12 +5,18 @@ package gamercompanion.src.dataObjects;
  */
 public class Plugin {
     private String _title;
+    private String _pluginName;
 
-    public Plugin(String title) {
+    public Plugin(String title, String pluginName) {
         _title = title;
+        _pluginName = pluginName;
     }
 
     public String get_title() {
         return _title;
+    }
+
+    public String get_pluginName() {
+        return _pluginName;
     }
 }

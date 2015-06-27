@@ -14,7 +14,8 @@ import java.util.Iterator;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Created by dklemm on 16.06.15.
+ * Describes a Try of a Supplier, it wrappes The included Code
+ * so that a sucess or failure can be given back
  */
 public abstract class Try<T> implements Serializable {
     private static final long serialVersionUID = 0;

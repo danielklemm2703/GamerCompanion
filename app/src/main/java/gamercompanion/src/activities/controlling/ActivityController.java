@@ -4,21 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 
 /**
- * has the active displayed activity, necessary for managing systemProperties
+ * Has the active displayed activity, necessary for managing systemPropertiesq
  */
 public class ActivityController {
 
-    private static Activity _activeActivity;
+    private static Context _activeContext;
 
     public static Context get_Context() {
-        return _activeActivity;
+        return _activeContext;
     }
 
-    public static Activity get_activeActivity() {
-        return _activeActivity;
-    }
-
-    public static void set_activeActivity(Activity activeActivity) {
-        ActivityController._activeActivity = activeActivity;
+    public static void set_activeContext(Context activeContext) {
+        _activeContext = activeContext;
     }
 }

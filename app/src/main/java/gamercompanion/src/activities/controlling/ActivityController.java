@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 /**
- * Created by dklemm on 21.06.15.
+ * has the active displayed activity, necessary for managing systemProperties
  */
 public class ActivityController {
 

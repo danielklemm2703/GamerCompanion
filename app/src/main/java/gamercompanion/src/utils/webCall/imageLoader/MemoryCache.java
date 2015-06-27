@@ -7,7 +7,7 @@ import java.util.Map;
 import android.graphics.Bitmap;
 
 /**
- * Created by dklemm on 12.06.15.
+ * This class is used in the Bitman-save-chain of the ImageLoader
  */
 public class MemoryCache {
     private Map<String, SoftReference<Bitmap>> cache=Collections.synchronizedMap(new HashMap<String, SoftReference<Bitmap>>());

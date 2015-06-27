@@ -25,8 +25,9 @@ import gamercompanion.src.utils.Utils;
 
 
 /**
- * Created by dklemm on 12.06.15.
+ * This class loads an Image/bitmap from a given URL
  */
+//TODO refactor / integrate
 public class ImageLoader {
 //
 //    MemoryCache memoryCache=new MemoryCache();

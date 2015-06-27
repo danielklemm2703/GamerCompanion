@@ -1,9 +1,7 @@
 package gamercompanion.src.utils;
 
 
-/**
- * Created by dklemm on 11.06.15.
- */
+
 //TODO refactor
 public final class URLParser {
 

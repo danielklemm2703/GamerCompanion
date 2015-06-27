@@ -1,7 +1,9 @@
 package gamercompanion.src.dataObjects.gameProgress;
 
 /**
- * Created by dklemm on 26.06.15.
+ * Abstract Superclass GameProgress
+ * Needs to be Abstract to manage different GameProgress extensions
  */
 public abstract class GameProgress {
+
 }

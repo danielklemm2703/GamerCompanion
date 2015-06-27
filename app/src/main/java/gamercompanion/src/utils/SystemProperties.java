@@ -1,6 +1,4 @@
-package gamercompanion.src.utils; /**
- * Created by Zapdos on 16.06.2015.
- */
+package gamercompanion.src.utils;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -21,8 +19,7 @@ import gamercompanion.src.utils.tryUtil.Try;
 
 /**
  * provides properties as an immutable map
- * runs through default.properties file first, then overwrites doubled entries,
-   when reading the editable system.properties
+ * runs through system.properties file, reading the properties
  */
 public final class SystemProperties {
 
@@ -30,12 +27,13 @@ public final class SystemProperties {
     static final AtomicReference<SystemProperties> _instance = new AtomicReference<>();
     private final ImmutableMap<String, String> _properties;
 
-    // loads the system properties and default properties
     SystemProperties() {
         _properties = loadProperties(SYSTEM_PROPERTIES);
     }
 
-    // gives all properties as immutable map (String, String), loads properties, if not already done
+    /**
+    *    gives all properties as immutable map (String, String), loads properties, if not already done
+    */
     public static ImmutableMap<String,String> asImmutableMap()
     {
         initializeIfNotSet(_instance);
@@ -48,7 +46,9 @@ public final class SystemProperties {
         }
     }
 
-    // gives property according to the given string as an optional
+    /**
+     * gives property according to the given string as an optional
+     */
     public static Optional<String> getProperty(String key)
     {
         Preconditions.checkNotNull(key, "Argument 'key' must not be null");

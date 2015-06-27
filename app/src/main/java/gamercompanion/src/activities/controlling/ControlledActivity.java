@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Created by dklemm on 21.06.15.
+ * Needs to be extended by every activity to handle systemProperties
  */
 public class ControlledActivity extends Activity{
 

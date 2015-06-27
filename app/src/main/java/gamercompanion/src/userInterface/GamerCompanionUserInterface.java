@@ -14,10 +14,13 @@ import gamercompanion.src.utils.Unit;
 import gamercompanion.src.utils.tryUtil.Try;
 
 /**
- * Created by dklemm on 26.06.15.
+ * Drawes the UI of the {@link GamerCompanion} activity
  */
 public class GamerCompanionUserInterface {
 
+    /**
+    *   main function to dram the UI
+    */
     public static Try<Unit> drawGamerCompanionInterface(final GamerCompanion gamerCompanion)
     {
         return Try.of(new Supplier<Unit>() {

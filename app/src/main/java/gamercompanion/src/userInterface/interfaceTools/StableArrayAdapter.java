@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by dklemm on 11.06.15.
+ * This class is used to create lists of items, that are displayed in the UI
  */
 public class StableArrayAdapter extends ArrayAdapter<String> {
 

@@ -14,10 +14,7 @@ import org.apache.http.protocol.HttpContext;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-
-/**
- * Created by dklemm on 11.06.15.
- */
+//TODO refactor
 public class MetaScoreAllGetIO {//extends AsyncTask<Void, Void, String> {
 
 //    public Platforms _platform;

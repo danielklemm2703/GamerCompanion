@@ -1,10 +1,11 @@
 package gamercompanion.src.utils.webCall.imageLoader;
 
-/**
- * Created by dklemm on 12.06.15.
- */
 import java.io.File;
 import android.content.Context;
+
+/**
+ * This class implements the FileCache, needed in the ImageLoader class
+ */
 
 public class FileCache {
 

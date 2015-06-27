@@ -3,9 +3,7 @@ package gamercompanion.src.utils;
 
 import java.util.ArrayList;
 
-/**
- * Created by dklemm on 09.06.15.
- */
+
 //TODO refactor
 public class ParsingOperations {
 //

@@ -20,9 +20,7 @@ import java.io.InputStream;
 
 import gamercompanion.src.utils.webCall.imageLoader.ImageLoader;
 
-/**
- * Created by dklemm on 11.06.15.
- */
+//TODO refactor
 public class MetaScoreSingleGetIO {//extends AsyncTask<Void, Void, String> {
 
 //    public Platforms _platform;

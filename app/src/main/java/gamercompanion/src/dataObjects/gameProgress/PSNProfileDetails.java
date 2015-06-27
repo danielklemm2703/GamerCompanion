@@ -1,25 +1,25 @@
 package gamercompanion.src.dataObjects.gameProgress;
 
 /**
- * Created by dklemm on 26.06.15.
+ * DaO of PSN Profile Details
  */
 public class PSNProfileDetails {
-    private Integer _platinum;
-    private Integer _gold;
-    private Integer _silver;
-    private Integer _bronze;
-    private Integer _all;
-    private Integer _earned;
-    private Integer _unearned;
-    private Integer _progress;
-    private Integer _playedGames;
-    private Integer _completedGames;
-    private Integer _countryRank;
-    private Integer _countryDiff;
-    private Integer _worldRank;
-    private Integer _worldDiff;
-    private RarestTrophies _rarestTrophies;
-    private TrophyMilestones _trophyMilestones;
+    public Integer _platinum;
+    public Integer _gold;
+    public Integer _silver;
+    public Integer _bronze;
+    public Integer _all;
+    public Integer _earned;
+    public Integer _unearned;
+    public Integer _progress;
+    public Integer _playedGames;
+    public Integer _completedGames;
+    public Integer _countryRank;
+    public Integer _countryDiff;
+    public Integer _worldRank;
+    public Integer _worldDiff;
+    public RarestTrophies _rarestTrophies;
+    public TrophyMilestones _trophyMilestones;
 
     public PSNProfileDetails(Integer platinum, Integer gold, Integer silver, Integer bronze, Integer all,
                              Integer earned, Integer unearned, Integer progress, Integer playedGames,
@@ -42,69 +42,5 @@ public class PSNProfileDetails {
         _worldDiff = worldDiff;
         _rarestTrophies = rarestTrophies;
         _trophyMilestones = trophyMilestones;
-    }
-
-    public Integer get_platinum() {
-        return _platinum;
-    }
-
-    public Integer get_gold() {
-        return _gold;
-    }
-
-    public Integer get_silver() {
-        return _silver;
-    }
-
-    public Integer get_bronze() {
-        return _bronze;
-    }
-
-    public Integer get_all() {
-        return _all;
-    }
-
-    public Integer get_earned() {
-        return _earned;
-    }
-
-    public Integer get_unearned() {
-        return _unearned;
-    }
-
-    public Integer get_progress() {
-        return _progress;
-    }
-
-    public Integer get_playedGames() {
-        return _playedGames;
-    }
-
-    public Integer get_completedGames() {
-        return _completedGames;
-    }
-
-    public Integer get_countryRank() {
-        return _countryRank;
-    }
-
-    public Integer get_countryDiff() {
-        return _countryDiff;
-    }
-
-    public Integer get_worldRank() {
-        return _worldRank;
-    }
-
-    public Integer get_worldDiff() {
-        return _worldDiff;
-    }
-
-    public RarestTrophies get_rarestTrophies() {
-        return _rarestTrophies;
-    }
-
-    public TrophyMilestones get_trophyMilestones() {
-        return _trophyMilestones;
     }
 }

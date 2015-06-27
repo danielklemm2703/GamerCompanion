@@ -1,10 +1,10 @@
 package gamercompanion.src.dataObjects.gameProgress;
 
 /**
- * Created by dklemm on 26.06.15.
+ * DaO of StandardGameProgress
  */
 public class StandardGameProgress extends GameProgress {
-    private StandardProgress _progress;
+    public StandardProgress _progress;
 
     public StandardGameProgress(StandardProgress progress)
     {

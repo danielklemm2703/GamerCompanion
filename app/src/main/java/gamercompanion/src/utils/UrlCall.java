@@ -1,8 +1,6 @@
-package com.example.dklemm.src.enums;
+package gamercompanion.src.utils;
 
-/**
- * Created by dklemm on 11.06.15.
- */
+//TODO refactor
 public enum UrlCall {
     //TODO do sth safe with pw & user
     METACRITIC_SINGLE("danielk2703", "holymonk1234", "metacritic.com/game/"),

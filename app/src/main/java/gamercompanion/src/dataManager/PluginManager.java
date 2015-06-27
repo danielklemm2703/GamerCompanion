@@ -14,7 +14,8 @@ import gamercompanion.src.dataObjects.plugin.Plugin;
 import gamercompanion.src.utils.SystemProperties;
 
 /**
- * Created by dklemm on 24.06.15.
+ * Plugin Manager loads all properties from system.properties
+ * that are describing Plugins
  */
 public class PluginManager {
     private static final String PLUGIN_PREFIX = "plugin_";
@@ -45,7 +46,9 @@ public class PluginManager {
         }).toList();
     }
 
-    // gives all properties as immutable map (String, String), loads properties, if not already done
+    /*
+     * gives all properties as immutable map (String, String), loads properties, if not already done
+     */
     public static ImmutableCollection<Plugin> asImmutableCollection()
     {
         initializeIfNotSet(_instance);
@@ -66,6 +69,4 @@ public class PluginManager {
             instance.set(new PluginManager());
         }
     }
-
-
 }

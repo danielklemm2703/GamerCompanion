@@ -1,7 +1,9 @@
 package gamercompanion.src.utils;
 
 /**
- * Created by dklemm on 09.06.15.
+ * This class is intended to provide platform specific data.
+ * All Platforms the app can technically track must be registered here.
+ * Also extended Data can be held here (e.g. like URL parts etc.)
  */
 public enum Platform {
 

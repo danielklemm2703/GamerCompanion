@@ -8,7 +8,9 @@ import gamercompanion.src.utils.tryUtil.Try;
 
 import static gamercompanion.src.userInterface.GamerCompanionUserInterface.*;
 
-
+/*
+* This class implements the starting activity of GamerCompanion app
+*/
 public class GamerCompanion extends ControlledActivity {
 
     @Override

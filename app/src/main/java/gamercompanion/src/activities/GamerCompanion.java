@@ -1,11 +1,9 @@
 package gamercompanion.src.activities;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import gamercompanion.src.activities.controlling.ControlledActivity;
-import gamercompanion.src.error.ErrorUtil;
+import static gamercompanion.src.error.ErrorUtil.*;
 import gamercompanion.src.utils.Unit;
 import gamercompanion.src.utils.tryUtil.Try;
 
@@ -25,6 +23,6 @@ public class GamerCompanion extends ControlledActivity {
         {
             //TODO draw Error
         }
-        ErrorUtil.showError(this);
+        showWarning(this, "Inserted Error Message");
     }
 }

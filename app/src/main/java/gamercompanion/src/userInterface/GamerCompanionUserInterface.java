@@ -1,9 +1,15 @@
 package gamercompanion.src.userInterface;
 
+import android.text.Layout;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.common.base.Supplier;
 
@@ -18,6 +24,7 @@ import gamercompanion.src.utils.tryUtil.Try;
  */
 public class GamerCompanionUserInterface {
 
+    static Boolean click = true;
     /**
     *   main function to dram the UI
     */
@@ -27,9 +34,8 @@ public class GamerCompanionUserInterface {
             @Override
             public Unit get() {
                 // Defining the RelativeLayout layout parameters with Fill_Parent
-                RelativeLayout relativeLayout = new RelativeLayout(gamerCompanion);
+                final RelativeLayout relativeLayout = new RelativeLayout(gamerCompanion);
                 RelativeLayout.LayoutParams relativeLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.FILL_PARENT);
-
                 ListView listView = new ListView(gamerCompanion);
                 relativeLayout.addView(listView);
 
@@ -41,7 +47,7 @@ public class GamerCompanionUserInterface {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String item = (String) parent.getAdapter().getItem(position);
-    //                startDetailsActivity(item);
+                        //                startDetailsActivity(item);
                     }
                 });
 
@@ -49,6 +55,5 @@ public class GamerCompanionUserInterface {
                 return Unit.VALUE;
             }
         });
-
     }
 }

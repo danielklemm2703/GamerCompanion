@@ -9,6 +9,7 @@ import android.content.Context;
 public class ActivityController {
 
     private static Context _activeContext;
+    private static ControlledActivity _activeActivity;
 
     public static Context get_Context() {
         return _activeContext;
@@ -16,5 +17,13 @@ public class ActivityController {
 
     public static void set_activeContext(Context activeContext) {
         _activeContext = activeContext;
+    }
+
+    public static void set_activeActivity(ControlledActivity activeActivity) {
+        _activeActivity = activeActivity;
+    }
+
+    public static ControlledActivity get_activeActivity() {
+        return _activeActivity;
     }
 }

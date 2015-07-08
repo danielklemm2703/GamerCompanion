@@ -2,8 +2,13 @@ package gamercompanion.src.activities;
 
 import android.os.Bundle;
 
+import com.google.common.collect.ImmutableCollection;
+
 import gamercompanion.src.activities.controlling.ControlledActivity;
 import static gamercompanion.src.error.ErrorUtil.*;
+
+import gamercompanion.src.dataManager.PlatformManager;
+import gamercompanion.src.utils.Platform;
 import gamercompanion.src.utils.Unit;
 import gamercompanion.src.utils.tryUtil.Try;
 

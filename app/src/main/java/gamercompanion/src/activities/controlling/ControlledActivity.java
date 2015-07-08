@@ -20,5 +20,6 @@ public class ControlledActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityController.set_activeContext(this);
+        ActivityController.set_activeActivity(this);
     }
 }

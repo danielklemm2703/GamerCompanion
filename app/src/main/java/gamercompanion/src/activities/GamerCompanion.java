@@ -21,8 +21,7 @@ public class GamerCompanion extends ControlledActivity {
         Try<Unit> tryLayout = drawGamerCompanionInterface(this);
         if(!tryLayout.isSuccess())
         {
-            //TODO draw Error
+            showWarning(this, tryLayout.failure().getMessage());
         }
-        showWarning(this, "Inserted Error Message");
     }
 }

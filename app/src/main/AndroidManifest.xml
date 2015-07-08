@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="gamercompanion.src.activities.GameDBMenu"
+            android:label="Game DB" >
+        </activity>
+        <activity
+            android:name="gamercompanion.src.activities.LaunchCalendarMenu"
+            android:label="Launch Calendar" >
+        </activity>
     </application>
 
 </manifest>

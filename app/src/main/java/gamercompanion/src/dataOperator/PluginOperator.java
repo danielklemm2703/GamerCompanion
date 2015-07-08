@@ -1,6 +1,8 @@
 package gamercompanion.src.dataOperator;
 
 import com.google.common.base.Function;
+import com.google.common.base.Optional;
+import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableCollection;
 
@@ -25,10 +27,25 @@ public class PluginOperator {
     public static FluentIterable<String> activatedPluginNames()
     {
        return FluentIterable.from(activatedPlugins()).transform(new Function<Plugin, String>() {
+           @Override
+           public String apply(Plugin input) {
+               return input._pluginName;
+           }
+       });
+    }
+
+    /*
+    * returns a plugin if the given name represents a plugin
+    */
+    public static Optional<Plugin> getPlugin(final String pluginName)
+    {
+       return FluentIterable.from(PluginManager.asImmutableCollection()).filter(new Predicate<Plugin>() {
             @Override
-            public String apply(Plugin input) {
-                return input._pluginName;
+            public boolean apply(Plugin input) {
+                if(input._pluginName.equals(pluginName))
+                    return true;
+                return false;
             }
-        });
+        }).first();
     }
 }

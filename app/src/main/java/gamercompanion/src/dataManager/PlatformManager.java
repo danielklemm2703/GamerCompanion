@@ -12,8 +12,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicReference;
 
-import gamercompanion.src.activities.controlling.ActivityController;
-import gamercompanion.src.error.ErrorUtil;
+import static gamercompanion.src.activities.controlling.ActivityController.*;
+import static gamercompanion.src.error.ErrorUtil.*;
 import gamercompanion.src.utils.Platform;
 import gamercompanion.src.utils.SystemProperties;
 import gamercompanion.src.utils.tryUtil.Try;
@@ -37,12 +37,12 @@ public class PlatformManager {
         else
         {
             _platforms = ImmutableSet.of();
-            ErrorUtil.showWarning( ActivityController.get_activeActivity(),platforms.failure().getMessage());
+            showWarning(get_activeActivity(), platforms.failure().getMessage());
         }
 
     }
 
-    private static final Try<ImmutableCollection<Platform>> loadPlatforms() {
+    private static Try<ImmutableCollection<Platform>> loadPlatforms() {
         return Try.of(new Supplier<ImmutableCollection<Platform>>() {
             @Override
             public ImmutableCollection<Platform> get() {

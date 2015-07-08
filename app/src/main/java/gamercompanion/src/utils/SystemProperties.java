@@ -14,7 +14,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicReference;
 
-import gamercompanion.src.activities.controlling.ActivityController;
+import static gamercompanion.src.activities.controlling.ActivityController.*;
+import static gamercompanion.src.error.ErrorUtil.*;
 import gamercompanion.src.utils.tryUtil.Try;
 
 /**
@@ -65,8 +66,7 @@ public final class SystemProperties {
         {
             return toImmutableMap(properties.get());
         }
-        //TODO Error class should handle this
-        System.err.println(properties.failure().toString());
+        showCriticalError(get_activeActivity(),properties.failure().getMessage());
         return toImmutableMap(new Properties());
     }
 
@@ -76,7 +76,7 @@ public final class SystemProperties {
             public Properties get() {
                 try {
                     Properties properties = new Properties();
-                    Context context = ActivityController.get_Context();
+                    Context context = get_Context();
                     AssetManager assetManager = context.getAssets();
                     InputStream inputStream = null;
                     inputStream = assetManager.open(file);

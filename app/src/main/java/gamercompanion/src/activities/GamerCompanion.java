@@ -22,7 +22,7 @@ public class GamerCompanion extends ControlledActivity {
         Try<Unit> tryLayout = drawGamerCompanionInterface();
         if(!tryLayout.isSuccess())
         {
-            showWarning(this, tryLayout.failure().getMessage());
+            showWarning(tryLayout.failure().getMessage());
         }
     }
 }

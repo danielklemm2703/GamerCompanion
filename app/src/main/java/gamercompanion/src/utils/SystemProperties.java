@@ -66,7 +66,7 @@ public final class SystemProperties {
         {
             return toImmutableMap(properties.get());
         }
-        showCriticalError(get_activeActivity(),properties.failure().getMessage());
+        showCriticalError(properties.failure().getMessage());
         return toImmutableMap(new Properties());
     }
 

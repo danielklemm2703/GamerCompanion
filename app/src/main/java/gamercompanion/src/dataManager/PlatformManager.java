@@ -37,7 +37,7 @@ public class PlatformManager {
         else
         {
             _platforms = ImmutableSet.of();
-            showWarning(get_activeActivity(), platforms.failure().getMessage());
+            showWarning( platforms.failure().getMessage());
         }
 
     }

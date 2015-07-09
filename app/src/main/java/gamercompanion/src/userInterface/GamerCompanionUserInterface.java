@@ -22,11 +22,10 @@ import gamercompanion.src.utils.Unit;
 import gamercompanion.src.utils.tryUtil.Try;
 
 /**
- * Drawes the UI of the {@link GamerCompanion} activity
+ * Draws the UI of the {@link GamerCompanion} activity
  */
 public class GamerCompanionUserInterface {
 
-    static Boolean click = true;
     /**
     *   main function to dram the UI
     */
@@ -53,14 +52,14 @@ public class GamerCompanionUserInterface {
                         Optional<Plugin> plugin = PluginOperator.getPlugin(itemName);
                         if(!plugin.isPresent())
                         {
-                            showCriticalError(activeActivity, "An Error occured while loading the plugin '" + itemName + "'");
+                            showCriticalError( "An Error occured while loading the plugin '" + itemName + "'");
                         }
                         else
                         {
                             Try<Class<?>> nextActivity = getNextActivity(plugin.get());
                             if(!nextActivity.isSuccess())
                             {
-                                showWarning(activeActivity, nextActivity.failure().getMessage());
+                                showWarning( nextActivity.failure().getMessage());
                             }
                             else
                             {

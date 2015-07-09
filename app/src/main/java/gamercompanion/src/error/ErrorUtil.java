@@ -1,9 +1,9 @@
 package gamercompanion.src.error;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
+import static gamercompanion.src.activities.controlling.ActivityController.*;
 import gamercompanion.src.activities.controlling.ControlledActivity;
 
 /**
@@ -54,15 +54,15 @@ public class ErrorUtil {
         }
     }
 
-    public static final void showCriticalError(final ControlledActivity activity, String errorText) {
-        setErrorBuilder(MessageType.ERROR, errorText, false, activity);
+    public static final void showCriticalError( String errorText) {
+        setErrorBuilder(MessageType.ERROR, errorText, false, get_activeActivity());
     }
 
-    public static final void showWarning(final ControlledActivity activity, String warningText) {
-        setErrorBuilder(MessageType.WARNING, warningText, true, activity);
+    public static final void showWarning( String warningText) {
+        setErrorBuilder(MessageType.WARNING, warningText, true, get_activeActivity());
     }
 
-    public static final void showInfo(final ControlledActivity activity, String infoText) {
-        setErrorBuilder(MessageType.WARNING, infoText, true, activity);
+    public static final void showInfo( String infoText) {
+        setErrorBuilder(MessageType.WARNING, infoText, true, get_activeActivity());
     }
 }

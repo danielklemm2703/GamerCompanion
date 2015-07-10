@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 import com.google.common.base.Optional;
-import com.google.common.base.Preconditions;
+import static com.google.common.base.Preconditions.*;
 import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableMap;
 
@@ -52,7 +52,7 @@ public final class SystemProperties {
      */
     public static Optional<String> getProperty(String key)
     {
-        Preconditions.checkNotNull(key, "Argument 'key' must not be null");
+        checkNotNull(key, "Argument 'key' must not be null");
         if(asImmutableMap().containsKey(key))
         {
             return Optional.of(asImmutableMap().get(key));

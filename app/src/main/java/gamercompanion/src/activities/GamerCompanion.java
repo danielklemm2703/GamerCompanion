@@ -5,8 +5,11 @@ import android.os.Bundle;
 import gamercompanion.src.activities.controlling.ControlledActivity;
 import static gamercompanion.src.error.ErrorUtil.*;
 
+import gamercompanion.src.utils.Platform;
 import gamercompanion.src.utils.Unit;
 import gamercompanion.src.utils.tryUtil.Try;
+import gamercompanion.src.synchronizer.WebCallTask;
+import gamercompanion.src.synchronizer.MetascoreAllGames;
 
 import static gamercompanion.src.userInterface.GamerCompanionUserInterface.*;
 
@@ -24,5 +27,6 @@ public class GamerCompanion extends ControlledActivity {
         {
             showWarning(tryLayout.failure().getMessage());
         }
+        new WebCallTask(new MetascoreAllGames(Platform.PS4)).execute();
     }
 }

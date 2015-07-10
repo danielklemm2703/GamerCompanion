@@ -1,4 +1,4 @@
-package gamercompanion.src.utils.webCall.imageLoader;
+package gamercompanion.src.synchronizer.imageLoader;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

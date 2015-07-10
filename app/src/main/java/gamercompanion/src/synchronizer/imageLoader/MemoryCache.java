@@ -1,4 +1,4 @@
-package gamercompanion.src.utils.webCall.imageLoader;
+package gamercompanion.src.synchronizer.imageLoader;
 
 import java.lang.ref.SoftReference;
 import java.util.Collections;

@@ -63,7 +63,7 @@ public class GamerCompanionUserInterface {
                             }
                             else
                             {
-                                Intent intent = new Intent(activeActivity, nextActivity.get() );
+                                Intent intent = new Intent(activeActivity, nextActivity.get());
                                 activeActivity.startActivity(intent);
                             }
                         }

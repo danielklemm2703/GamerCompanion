@@ -90,7 +90,7 @@ public class GamerCompanionUserInterface {
                     return LaunchCalendarMenu.class;
                 }
                 //TODO register next plugins here
-                throw new IllegalStateException("Plugin '"+ pluginName +"' may not be implemented yet");
+                throw new IllegalStateException("Plugin '"+ pluginName +"' is not implemented yet");
             }
         });
     }

@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static gamercompanion.src.activities.controlling.ActivityController.*;
 import static gamercompanion.src.error.ErrorUtil.*;
+
 import gamercompanion.src.utils.tryUtil.Try;
 
 /**
@@ -78,12 +79,11 @@ public final class SystemProperties {
                     Properties properties = new Properties();
                     Context context = get_Context();
                     AssetManager assetManager = context.getAssets();
-                    InputStream inputStream = null;
-                    inputStream = assetManager.open(file);
+                    InputStream inputStream = assetManager.open(file);
                     properties.load(inputStream);
                     return properties;
                 } catch (IOException e) {
-                    throw new RuntimeException("PropertiesFile was not found: "+file);
+                    throw new RuntimeException("PropertiesFile was not found: " + file);
                 }
             }
         });
@@ -97,5 +97,4 @@ public final class SystemProperties {
         }
         return b.build();
     }
-
 }

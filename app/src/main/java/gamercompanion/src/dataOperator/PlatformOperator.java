@@ -5,13 +5,10 @@ import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableCollection;
 
 import gamercompanion.src.dataManager.PlatformManager;
-import gamercompanion.src.dataManager.PluginManager;
-import gamercompanion.src.dataObjects.plugin.Plugin;
 import gamercompanion.src.utils.Platform;
 
 /**
  * Provides a bunch of functions related processing information about the Platforms.
- *
  */
 public class PlatformOperator {
     /**

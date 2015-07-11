@@ -4,8 +4,6 @@ import android.test.AndroidTestCase;
 
 import com.google.common.collect.ImmutableCollection;
 
-import junit.framework.TestCase;
-
 import gamercompanion.src.activities.controlling.ActivityController;
 import gamercompanion.src.dataManager.PluginManager;
 import gamercompanion.src.dataObjects.plugin.Plugin;

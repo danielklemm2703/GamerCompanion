@@ -31,4 +31,6 @@ public abstract class WebCall {
 
     abstract public String computeURL();
 
+    abstract public Unit execute();
+
 }

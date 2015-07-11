@@ -27,6 +27,6 @@ public class GamerCompanion extends ControlledActivity {
         {
             showWarning(tryLayout.failure().getMessage());
         }
-        new WebCallTask(new MetascoreAllGames(Platform.PS4)).execute();
+        new MetascoreAllGames(Platform.PS4).execute();
     }
 }

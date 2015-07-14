@@ -29,7 +29,7 @@ public class PluginOperator {
        return FluentIterable.from(activatedPlugins()).transform(new Function<Plugin, String>() {
            @Override
            public String apply(Plugin input) {
-               return input._pluginName;
+               return input.pluginName();
            }
        });
     }
@@ -42,7 +42,7 @@ public class PluginOperator {
        return FluentIterable.from(PluginManager.asImmutableCollection()).filter(new Predicate<Plugin>() {
             @Override
             public boolean apply(Plugin input) {
-                if(input._pluginName.equals(pluginName))
+                if(input.pluginName().equals(pluginName))
                     return true;
                 return false;
             }

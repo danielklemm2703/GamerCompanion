@@ -1,12 +1,10 @@
 package gamercompanion.src.synchronizer;
 
 import com.google.common.base.Optional;
-import com.google.common.collect.ImmutableCollection;
 
-import gamercompanion.src.dataManager.CredentialsManager;
 import gamercompanion.src.dataObjects.credentials.WebCredentials;
 import gamercompanion.src.dataOperator.CredentialsOperator;
-import gamercompanion.src.error.ErrorUtil;
+import static gamercompanion.src.error.ErrorUtil.*;
 import gamercompanion.src.utils.Platform;
 
 import gamercompanion.src.utils.Unit;
@@ -35,7 +33,7 @@ public class MetascoreAllGames extends WebCall
         Optional<WebCredentials> credentials = CredentialsOperator.credentialsForWebsite(WEBSITE);
         if(!credentials.isPresent())
         {
-            ErrorUtil.showWarning("No credentials for website '"+WEBSITE+"' found in system.properties");
+            showWarning("No credentials for website '"+WEBSITE+"' found in system.properties");
             return String.format(EMPTY_METASCORE_ALL_GAMES_URL_PATTERN,_platform());
         }
         return String.format(METASCORE_ALL_GAMES_URL_PATTERN,credentials.get()._username(),credentials.get()._password(),_platform()._allGamesURLname);

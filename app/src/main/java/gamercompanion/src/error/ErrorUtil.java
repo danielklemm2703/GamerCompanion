@@ -63,6 +63,6 @@ public class ErrorUtil {
     }
 
     public static final void showInfo( String infoText) {
-        setErrorBuilder(MessageType.WARNING, infoText, true, get_activeActivity());
+        setErrorBuilder(MessageType.INFO, infoText, true, get_activeActivity());
     }
 }

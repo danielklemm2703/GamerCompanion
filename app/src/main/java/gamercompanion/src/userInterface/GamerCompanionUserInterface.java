@@ -1,5 +1,7 @@
 package gamercompanion.src.userInterface;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +19,8 @@ import gamercompanion.src.activities.controlling.ControlledActivity;
 import gamercompanion.src.dataObjects.plugin.Plugin;
 import gamercompanion.src.dataOperator.PluginOperator;
 import static gamercompanion.src.error.ErrorUtil.*;
+
+import static gamercompanion.src.synchronizer.Synchronizer.*;
 import gamercompanion.src.userInterface.interfaceTools.StableArrayAdapter;
 import gamercompanion.src.utils.Unit;
 import gamercompanion.src.utils.tryUtil.Try;
@@ -70,6 +74,26 @@ public class GamerCompanionUserInterface {
                     }
                 });
 
+                //Set up question to synchronize with the web
+                AlertDialog.Builder builder = new AlertDialog.Builder(activeActivity);
+                builder.setMessage("Do you want to synchronize your data base with the web?");
+                builder.setCancelable(false);
+                builder.setTitle("Synchronize");
+
+                builder.setPositiveButton("Synchronize", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        synchronize();
+                    }
+                });
+                builder.setNegativeButton("Take local data", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        showWarning("This is not implemented yet");
+                    }
+                });
+
+                AlertDialog alert11 = builder.create();
+                alert11.show();
+
                 activeActivity.setContentView(relativeLayout, relativeLayoutParams);
                 return Unit.VALUE;
             }
@@ -80,17 +104,7 @@ public class GamerCompanionUserInterface {
         return Try.of(new Supplier<Class<?>>() {
             @Override
             public Class<?> get() {
-                String pluginName = plugin._pluginName;
-                if(pluginName.equals(Plugin.GAMEDB_PLUGIN))
-                {
-                    return GameDBMenu.class;
-                }
-                if(pluginName.equals(Plugin.LAUNCH_CALENDAR_PLUGIN))
-                {
-                    return LaunchCalendarMenu.class;
-                }
-                //TODO register next plugins here
-                throw new IllegalStateException("Plugin '"+ pluginName +"' is not implemented yet");
+                return plugin.firstPage();
             }
         });
     }

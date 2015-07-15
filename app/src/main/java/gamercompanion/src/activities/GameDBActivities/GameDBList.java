@@ -24,7 +24,7 @@ public class GameDBList extends ControlledActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         String platformName = intent.getStringExtra(GameDBMenuUserInterface.EXTRA_MESSAGE);
-        setTitle("Game DB -"+platformName);
+        setTitle("Game DB - "+platformName);
         Optional<Platform> platformOptional = PlatformOperator.getPlatform(platformName);
         if(!platformOptional.isPresent())
         {
@@ -35,7 +35,7 @@ public class GameDBList extends ControlledActivity {
             Try<Unit> tryLayout = GameDBListUserInterface.drawGameDBListInterface(platformOptional.get());
             if(!tryLayout.isSuccess())
             {
-                showWarning(tryLayout.failure().getMessage());
+                showWarning("GameDBList could not be drawn "+tryLayout.failure().getMessage());
             }
         }
     }

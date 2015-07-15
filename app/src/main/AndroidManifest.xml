@@ -21,13 +21,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="gamercompanion.src.activities.GameDBMenu"
+            android:name="gamercompanion.src.activities.GameDBActivities.GameDBMenu"
             android:label="Game DB" >
         </activity>
+        <activity
+            android:name="gamercompanion.src.activities.GameDBActivities.GameDBList"
+            android:label="Game DB" >
+        </activity>
+
         <activity
             android:name="gamercompanion.src.activities.LaunchCalendarMenu"
             android:label="Launch Calendar" >
         </activity>
+
         <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         <uses-permission android:name="android.permission.INTERNET" />

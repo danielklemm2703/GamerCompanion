@@ -1,13 +1,21 @@
 package gamercompanion.src.synchronizer;
 
 import com.google.common.base.Optional;
+import com.google.common.base.Supplier;
+import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableSet;
 
+import gamercompanion.src.dataManager.GameObjectManager;
 import gamercompanion.src.dataObjects.credentials.WebCredentials;
+import gamercompanion.src.dataObjects.game.GameObject;
 import gamercompanion.src.dataOperator.CredentialsOperator;
 import static gamercompanion.src.error.ErrorUtil.*;
+
+import gamercompanion.src.utils.ParsingOperations;
 import gamercompanion.src.utils.Platform;
 
 import gamercompanion.src.utils.Unit;
+import gamercompanion.src.utils.tryUtil.Try;
 
 /**
  * Describes how to proceed with a call to the metacritic all games platform
@@ -23,9 +31,16 @@ public class MetascoreAllGames extends WebCall
     }
 
     @Override
-    public Unit computeResult(String result) {
-        //TODO implement the API to synchronizer
-        return Unit.VALUE;
+    public Try<Unit> computeResult(final String result) {
+        final Platform platform = this._platform();
+        return Try.of(new Supplier<Unit>() {
+            @Override
+            public Unit get() {
+                ImmutableCollection<GameObject> platformGames = ParsingOperations.parseGamesOfPlatformOfWebsite(platform, result);
+                GameObjectManager.insertAndOverwrite(platform, platformGames);
+                return Unit.VALUE;
+            }
+        });
     }
 
     @Override

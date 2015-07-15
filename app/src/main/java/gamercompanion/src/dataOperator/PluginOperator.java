@@ -40,12 +40,22 @@ public class PluginOperator {
     public static Optional<Plugin> getPlugin(final String pluginName)
     {
        return FluentIterable.from(PluginManager.asImmutableCollection()).filter(new Predicate<Plugin>() {
-            @Override
-            public boolean apply(Plugin input) {
-                if(input.pluginName().equals(pluginName))
-                    return true;
-                return false;
-            }
-        }).first();
+           @Override
+           public boolean apply(Plugin input) {
+               if (input.pluginName().equals(pluginName))
+                   return true;
+               return false;
+           }
+       }).first();
+    }
+
+    /**
+     * loads all plugins in the right order of synchronize
+     *
+     * @return sorted plugins
+     */
+    public static ImmutableCollection<Plugin> activatedPluginsByPriority() {
+        //TODO introduce order of plugins when loading
+        return activatedPlugins();
     }
 }

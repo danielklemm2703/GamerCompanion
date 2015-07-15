@@ -1,9 +1,9 @@
-package gamercompanion.src.activities;
+package gamercompanion.src.activities.GameDBActivities;
 
 import android.os.Bundle;
 
 import gamercompanion.src.activities.controlling.ControlledActivity;
-import static gamercompanion.src.userInterface.GameDBMenuUserInterface.*;
+import static gamercompanion.src.userInterface.gameDBUserInterface.GameDBMenuUserInterface.*;
 import gamercompanion.src.utils.Unit;
 import gamercompanion.src.utils.tryUtil.Try;
 

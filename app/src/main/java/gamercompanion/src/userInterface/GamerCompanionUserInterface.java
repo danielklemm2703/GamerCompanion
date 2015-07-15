@@ -11,9 +11,7 @@ import android.widget.RelativeLayout;
 import com.google.common.base.Optional;
 import com.google.common.base.Supplier;
 
-import gamercompanion.src.activities.GameDBMenu;
 import gamercompanion.src.activities.GamerCompanion;
-import gamercompanion.src.activities.LaunchCalendarMenu;
 import gamercompanion.src.activities.controlling.ActivityController;
 import gamercompanion.src.activities.controlling.ControlledActivity;
 import gamercompanion.src.dataObjects.plugin.Plugin;

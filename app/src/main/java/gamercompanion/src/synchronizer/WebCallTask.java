@@ -2,6 +2,8 @@ package gamercompanion.src.synchronizer;
 
 import android.os.AsyncTask;
 
+import com.google.common.base.Strings;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -64,7 +66,7 @@ public class WebCallTask extends AsyncTask<Void, Void, String> {
     }
 
     protected void onPostExecute(String results) {
-        if (results!=null) {
+        if (!Strings.isNullOrEmpty(results)) {
             _webCall.computeResult(results);
         }
         else

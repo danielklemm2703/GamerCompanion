@@ -2,6 +2,7 @@ package gamercompanion.src.synchronizer;
 
 import gamercompanion.src.utils.Platform;
 import gamercompanion.src.utils.Unit;
+import gamercompanion.src.utils.tryUtil.Try;
 
 import static com.google.common.base.Preconditions.*;
 
@@ -11,7 +12,7 @@ import static com.google.common.base.Preconditions.*;
  */
 public abstract class WebCall {
 
-    private static Platform _platform;
+    private Platform _platform;
 
     WebCall(Platform platform)
     {
@@ -27,7 +28,7 @@ public abstract class WebCall {
         return computeURL();
     }
 
-    abstract public Unit computeResult(String result);
+    abstract public Try<Unit> computeResult(String result);
 
     abstract public String computeURL();
 

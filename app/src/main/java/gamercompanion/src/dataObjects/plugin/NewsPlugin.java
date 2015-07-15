@@ -1,11 +1,11 @@
 package gamercompanion.src.dataObjects.plugin;
 
-import com.google.common.collect.ImmutableCollection;
+import com.google.common.base.Supplier;
 
-import gamercompanion.src.activities.GameDBMenu;
 import gamercompanion.src.activities.controlling.ControlledActivity;
 import gamercompanion.src.error.ErrorUtil;
-import gamercompanion.src.synchronizer.WebCall;
+import gamercompanion.src.utils.Unit;
+import gamercompanion.src.utils.tryUtil.Try;
 
 /**
  * Created by dklemm on 14.07.15.
@@ -16,8 +16,13 @@ public class NewsPlugin extends Plugin {
     }
 
     @Override
-    public ImmutableCollection<WebCall> updateTasks() {
-        return null;
+    public Try<Unit> executeTasks() {
+        return Try.of(new Supplier<Unit>() {
+            @Override
+            public Unit get() {
+                return null;
+            }
+        });
     }
 
     @Override

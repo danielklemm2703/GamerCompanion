@@ -1,10 +1,9 @@
 package gamercompanion.src.dataObjects.plugin;
 
-import com.google.common.collect.ImmutableCollection;
 
-import gamercompanion.src.activities.GameDBMenu;
 import gamercompanion.src.activities.controlling.ControlledActivity;
-import gamercompanion.src.synchronizer.WebCall;
+import gamercompanion.src.utils.Unit;
+import gamercompanion.src.utils.tryUtil.Try;
 
 /**
  * DaO of a Plugin
@@ -31,7 +30,7 @@ public abstract class Plugin {
         return _pluginName;
     }
 
-    abstract public ImmutableCollection<WebCall> updateTasks();
+    abstract public Try<Unit> executeTasks();
 
     abstract public Class<? extends ControlledActivity> firstPage();
 }

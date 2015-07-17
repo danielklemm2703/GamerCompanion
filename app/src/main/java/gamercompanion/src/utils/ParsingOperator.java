@@ -1,17 +1,23 @@
 package gamercompanion.src.utils;
 
 
+import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
 
 import java.util.ArrayList;
 
 import gamercompanion.src.dataObjects.game.GameObject;
+import gamercompanion.src.utils.tryUtil.Try;
 
 
 //TODO refactor
-public class ParsingOperations {
+public class ParsingOperator {
 
+    public ParsingOperator()
+    {
+
+    }
 //    public static final ArrayList<GameObject> parseScores(Platforms platformToParse, String inputString)
 //    {
 //        String platform = platformToParse(platformToParse);
@@ -110,34 +116,37 @@ public class ParsingOperations {
 //        return new ExtendedGameObject(game.getName(),game.getMetascore(),game.getPlatform(),game.getNameURL(),developerString,releaseDateString,genreString,ratingString,urlString);
 //    }
 
-    public static final ImmutableCollection<GameObject> parseGamesOfPlatformOfWebsite(Platform platform, String result) {
-        String platformPattern = platform._singleGameURLname;
-        String[] splittedInput = result.split("\\n");
-        boolean nextLineIsName = false;
-        String tempName="";
-        String tempScore="";
-        String tempNameUrl="";
-        ArrayList<GameObject> returnList = new ArrayList<GameObject>();
-        for(String line : splittedInput)
-        {
-            if(nextLineIsName)
-            {
-                tempName = line;
-                nextLineIsName = false;
-            }
-            if(line.contains("<a href=\"/game/"+platformPattern))
-            {
-                tempNameUrl = line.replace("<a href=\"/game/"+platformPattern+"/", "").replace("\">", "").trim();
-                nextLineIsName = true;
-            }
-            if(line.contains("<div class=\"metascore_w small game"))
-            {
-                tempScore = line.substring(45,47);
-                //TODO Parse name to add in URL _nameURL
-                returnList.add(new GameObject(tempName.trim(), platform, Integer.parseInt(tempScore), tempNameUrl));
-            }
-        }
+    public final Try<ImmutableCollection<GameObject>> parseGamesOfPlatformOfWebsite(final Platform platform, final String result) {
+        return Try.of(new Supplier<ImmutableCollection<GameObject>>() {
+            @Override
+            public ImmutableCollection<GameObject> get() {
+                String platformPattern = platform._singleGameURLname;
+                String[] splittedInput = result.split("\\n");
+                boolean nextLineIsName = false;
+                String tempName = "";
+                String tempScore = "";
+                String tempNameUrl = "";
+                ArrayList<GameObject> returnList = new ArrayList<GameObject>();
+                for (String line : splittedInput) {
+                    if (nextLineIsName) {
+                        tempName = line;
+                        nextLineIsName = false;
+                    }
+                    if (line.contains("<a href=\"/game/" + platformPattern)) {
+                        tempNameUrl = line.replace("<a href=\"/game/" + platformPattern + "/", "").replace("\">", "").trim();
+                        nextLineIsName = true;
+                    }
+                    if (line.contains("<div class=\"metascore_w small game")) {
+                        String[] splitedMetascore = line.split(">");
+                        tempScore = splitedMetascore[1].substring(0, 2);
 
-        return ImmutableSet.copyOf(returnList);
+                        returnList.add(new GameObject(tempName.trim(), platform, Integer.parseInt(tempScore), tempNameUrl));
+                        tempName = "";
+                        tempNameUrl = "";
+                    }
+                }
+                return ImmutableSet.copyOf(returnList);
+            }
+        });
     }
 }

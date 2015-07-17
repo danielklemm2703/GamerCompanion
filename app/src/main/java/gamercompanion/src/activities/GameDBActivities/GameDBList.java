@@ -13,6 +13,7 @@ import gamercompanion.src.utils.Platform;
 import gamercompanion.src.utils.Unit;
 import gamercompanion.src.utils.tryUtil.Try;
 
+import static gamercompanion.src.error.ErrorUtil.showInfo;
 import static gamercompanion.src.error.ErrorUtil.showWarning;
 
 /**
@@ -35,7 +36,14 @@ public class GameDBList extends ControlledActivity {
             Try<Unit> tryLayout = GameDBListUserInterface.drawGameDBListInterface(platformOptional.get());
             if(!tryLayout.isSuccess())
             {
-                showWarning("GameDBList could not be drawn "+tryLayout.failure().getMessage());
+                if(tryLayout.failure().getMessage() == null)
+                {
+                    showInfo("GameDBList could not be drawn. Maybe the synchronizing process is not finished.");
+                }
+                else
+                {
+                    showWarning("GameDBList could not be drawn "+tryLayout.failure().getMessage());
+                }
             }
         }
     }

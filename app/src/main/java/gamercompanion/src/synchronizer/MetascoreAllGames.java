@@ -3,7 +3,6 @@ package gamercompanion.src.synchronizer;
 import com.google.common.base.Optional;
 import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableCollection;
-import com.google.common.collect.ImmutableSet;
 
 import gamercompanion.src.dataManager.GameObjectManager;
 import gamercompanion.src.dataObjects.credentials.WebCredentials;
@@ -11,7 +10,7 @@ import gamercompanion.src.dataObjects.game.GameObject;
 import gamercompanion.src.dataOperator.CredentialsOperator;
 import static gamercompanion.src.error.ErrorUtil.*;
 
-import gamercompanion.src.utils.ParsingOperations;
+import gamercompanion.src.utils.ParsingOperator;
 import gamercompanion.src.utils.Platform;
 
 import gamercompanion.src.utils.Unit;
@@ -36,8 +35,13 @@ public class MetascoreAllGames extends WebCall
         return Try.of(new Supplier<Unit>() {
             @Override
             public Unit get() {
-                ImmutableCollection<GameObject> platformGames = ParsingOperations.parseGamesOfPlatformOfWebsite(platform, result);
-                GameObjectManager.insertAndOverwrite(platform, platformGames);
+                ParsingOperator po = new ParsingOperator();
+                Try<ImmutableCollection<GameObject>> platformGames = po.parseGamesOfPlatformOfWebsite(platform, result);
+                if(!platformGames.isSuccess())
+                {
+                     throw new IllegalStateException("Could not parse game DB entries: "+platformGames.failure().getMessage());
+                }
+                GameObjectManager.insertAndOverwrite(platform, platformGames.get());
                 return Unit.VALUE;
             }
         });
@@ -55,7 +59,8 @@ public class MetascoreAllGames extends WebCall
     }
 
     @Override
-    public Unit execute() {
+        public Unit execute() {
+
         new WebCallTask(this).execute();
         return Unit.VALUE;
     }

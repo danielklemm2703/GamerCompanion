@@ -17,7 +17,7 @@ public enum Platform {
     WIIU("WiiU", "Nintendo","wii-u","wii-u","wii-u","wiiu"),
     TDS("3DS", "Nintendo","3ds","3ds","3ds","3ds"),
     XBO("Xbox One", "Microsoft","xbox-one","xboxone","xboxone","xbo"),
-    X360("Xbox 360", "Microsoft","xbo-360","xbox360","xbox360","x360"),
+    X360("Xbox 360", "Microsoft","xbox-360","xbox360","xbox360","x360"),
     PC("PC", "Microsoft?","pc","pc","pc","pc");
 
     public String _platform;

@@ -2,9 +2,13 @@ package gamercompanion.src.dataManager;
 
 import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -71,5 +75,34 @@ public class GameObjectManager {
             map.put(p,_games.get(p));
         }
         return map;
+    }
+
+    public static Try<Unit> append(final Platform platform, final ImmutableCollection<GameObject> gameObjects) {
+        return Try.of(new Supplier<Unit>() {
+            @Override
+            public Unit get() {
+                initializeIfNotSet(_instance);
+                Map<Platform, ImmutableCollection<GameObject>> map = toMap(_games);
+                if(map.containsKey(platform))
+                {
+                    //TODO refactor this copy handling!
+                    ImmutableCollection<GameObject> immuListGames = map.get(platform);
+                    GameObject[] gamesAsArray = immuListGames.toArray(new GameObject[200]);
+                    List<GameObject> gamesList = new ArrayList<>();
+                    gamesList.addAll(Arrays.asList(gamesAsArray));
+                    gamesList.addAll(gameObjects);
+                    ImmutableList<GameObject> newGameList = ImmutableList.copyOf(gamesList);
+                    map.remove(platform);
+                    map.put(platform, newGameList);
+                    _games = ImmutableMap.copyOf(map);
+                }
+                else
+                {
+                    map.put(platform,gameObjects);
+                    _games = ImmutableMap.copyOf(map);
+                }
+                return Unit.VALUE;
+            }
+        });
     }
 }

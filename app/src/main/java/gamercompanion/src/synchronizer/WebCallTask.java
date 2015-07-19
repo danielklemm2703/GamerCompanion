@@ -15,6 +15,9 @@ import org.apache.http.protocol.HttpContext;
 import java.io.IOException;
 import java.io.InputStream;
 
+import gamercompanion.src.utils.Unit;
+import gamercompanion.src.utils.tryUtil.Try;
+
 import static gamercompanion.src.error.ErrorUtil.*;
 
 /**
@@ -67,7 +70,11 @@ public class WebCallTask extends AsyncTask<Void, Void, String> {
 
     protected void onPostExecute(String results) {
         if (!Strings.isNullOrEmpty(results)) {
-            _webCall.computeResult(results);
+            Try<Unit> unitTry = _webCall.computeResult(results);
+            if(!unitTry.isSuccess())
+            {
+                showWarning("the webcall "+_webCall.getUrl()+" failed!: "+unitTry.failure().getMessage());
+            }
         }
         else
         {

@@ -16,7 +16,14 @@ public class Synchronizer {
             Try<Unit> unitTry = p.executeTasks();
             if(!unitTry.isSuccess())
             {
-                showWarning("Could not synchronize Plugin: "+p.pluginName()+": "+unitTry.failure().getMessage());
+                if(unitTry.failure().getMessage() == null)
+                {
+                    showWarning("Could not synchronize Plugin: "+p.pluginName()+": Maybe there are no webtasks for it or it returns null?");
+                }
+                else
+                {
+                    showWarning("Could not synchronize Plugin: "+p.pluginName()+": "+unitTry.failure().getMessage());
+                }
             }
         }
         return Unit.VALUE;

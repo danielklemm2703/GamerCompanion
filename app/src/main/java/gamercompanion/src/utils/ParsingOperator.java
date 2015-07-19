@@ -1,6 +1,8 @@
 package gamercompanion.src.utils;
 
 
+import android.util.Pair;
+
 import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
@@ -8,6 +10,7 @@ import com.google.common.collect.ImmutableSet;
 import java.util.ArrayList;
 
 import gamercompanion.src.dataObjects.game.GameObject;
+import gamercompanion.src.synchronizer.MetascoreAllGames;
 import gamercompanion.src.utils.tryUtil.Try;
 
 
@@ -116,16 +119,18 @@ public class ParsingOperator {
 //        return new ExtendedGameObject(game.getName(),game.getMetascore(),game.getPlatform(),game.getNameURL(),developerString,releaseDateString,genreString,ratingString,urlString);
 //    }
 
-    public final Try<ImmutableCollection<GameObject>> parseGamesOfPlatformOfWebsite(final Platform platform, final String result) {
-        return Try.of(new Supplier<ImmutableCollection<GameObject>>() {
+    public final Try<Pair<Integer, ImmutableCollection<GameObject>>> parseGamesOfPlatformOfWebsite(final Platform platform, final String result) {
+        return Try.of(new Supplier<Pair<Integer, ImmutableCollection<GameObject>>>() {
             @Override
-            public ImmutableCollection<GameObject> get() {
+            public Pair<Integer, ImmutableCollection<GameObject>> get() {
                 String platformPattern = platform._singleGameURLname;
                 String[] splittedInput = result.split("\\n");
                 boolean nextLineIsName = false;
                 String tempName = "";
                 String tempScore = "";
                 String tempNameUrl = "";
+                boolean nextPage = false;
+                int nextPageNumber =-1;
                 ArrayList<GameObject> returnList = new ArrayList<GameObject>();
                 for (String line : splittedInput) {
                     if (nextLineIsName) {
@@ -144,8 +149,17 @@ public class ParsingOperator {
                         tempName = "";
                         tempNameUrl = "";
                     }
+                    if(line.contains("<span class=\"flipper next\"><a class=\"action\" rel=\"next\" href=\""))
+                    {
+                        nextPage = true;
+                        String[] split = line.split("page=");
+                        String[] numberSplit = split[1].split("\"");
+                        nextPageNumber = Integer.parseInt(numberSplit[0]);
+
+                    }
                 }
-                return ImmutableSet.copyOf(returnList);
+                ImmutableCollection<GameObject> gameObjects = ImmutableSet.copyOf(returnList);
+                return Pair.create(nextPageNumber, gameObjects);
             }
         });
     }

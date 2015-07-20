@@ -43,66 +43,9 @@ public class GameObjectManager {
         }
     }
 
-    /**
-     * inserts new game objects in the manager
-     *
-     * @param platform
-     * @param gamesOfPlatform
-     * @return
-     */
-    public static Try<Unit> insertAndOverwrite(final Platform platform, final ImmutableCollection<GameObject> gamesOfPlatform)
+    public static void set_games(ImmutableMap<Platform, ImmutableCollection<GameObject>> games)
     {
-        return Try.of(new Supplier<Unit>() {
-            @Override
-            public Unit get() {
-                initializeIfNotSet(_instance);
-                Map<Platform, ImmutableCollection<GameObject>> map = toMap(_games);
-                if(map.containsKey(platform))
-                {
-                    map.remove(platform);
-                }
-                map.put(platform, gamesOfPlatform);
-                _games = ImmutableMap.copyOf(map);
-                return Unit.VALUE;
-            }
-        });
+        _games = games;
     }
 
-    private static Map<Platform, ImmutableCollection<GameObject>> toMap(ImmutableMap<Platform, ImmutableCollection<GameObject>> games) {
-        Map<Platform, ImmutableCollection<GameObject>> map = new HashMap<>();
-        for(Platform p:_games.keySet())
-        {
-            map.put(p,_games.get(p));
-        }
-        return map;
-    }
-
-    public static Try<Unit> append(final Platform platform, final ImmutableCollection<GameObject> gameObjects) {
-        return Try.of(new Supplier<Unit>() {
-            @Override
-            public Unit get() {
-                initializeIfNotSet(_instance);
-                Map<Platform, ImmutableCollection<GameObject>> map = toMap(_games);
-                if(map.containsKey(platform))
-                {
-                    //TODO refactor this copy handling!
-                    ImmutableCollection<GameObject> immuListGames = map.get(platform);
-                    GameObject[] gamesAsArray = immuListGames.toArray(new GameObject[200]);
-                    List<GameObject> gamesList = new ArrayList<>();
-                    gamesList.addAll(Arrays.asList(gamesAsArray));
-                    gamesList.addAll(gameObjects);
-                    ImmutableList<GameObject> newGameList = ImmutableList.copyOf(gamesList);
-                    map.remove(platform);
-                    map.put(platform, newGameList);
-                    _games = ImmutableMap.copyOf(map);
-                }
-                else
-                {
-                    map.put(platform,gameObjects);
-                    _games = ImmutableMap.copyOf(map);
-                }
-                return Unit.VALUE;
-            }
-        });
-    }
 }

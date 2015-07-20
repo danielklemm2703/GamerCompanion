@@ -12,6 +12,7 @@ import gamercompanion.src.dataObjects.game.GameObject;
 import gamercompanion.src.dataOperator.CredentialsOperator;
 import static gamercompanion.src.error.ErrorUtil.*;
 
+import gamercompanion.src.dataOperator.GameObjectOperator;
 import gamercompanion.src.utils.ParsingOperator;
 import gamercompanion.src.utils.Platform;
 
@@ -59,9 +60,10 @@ public class MetascoreAllGames extends WebCall
                 }
 
                 // evaluate the results
+                // if page is the first page the entries must describe a new entry
                 if(_page == 0)
                 {
-                    Try<Unit> unitTry = GameObjectManager.insertAndOverwrite(platform, platformGames.get().second);
+                    Try<Unit> unitTry = GameObjectOperator.insertAndOverwriteInGameBD(platform, platformGames.get().second);
                     if(!unitTry.isSuccess())
                     {
                         throw new IllegalStateException(unitTry.failure().getMessage());
@@ -69,7 +71,7 @@ public class MetascoreAllGames extends WebCall
                 }
                 else
                 {
-                    Try<Unit> unitTry = GameObjectManager.append(platform, platformGames.get().second);
+                    Try<Unit> unitTry = GameObjectOperator.appendInGameDB(platform, platformGames.get().second);
                     if(!unitTry.isSuccess())
                     {
                         throw new IllegalStateException(unitTry.failure().getMessage());

@@ -129,7 +129,6 @@ public class ParsingOperator {
                 String tempName = "";
                 String tempScore = "";
                 String tempNameUrl = "";
-                boolean nextPage = false;
                 int nextPageNumber =-1;
                 ArrayList<GameObject> returnList = new ArrayList<GameObject>();
                 for (String line : splittedInput) {
@@ -143,7 +142,7 @@ public class ParsingOperator {
                     }
                     if (line.contains("<div class=\"metascore_w small game")) {
                         String[] splitedMetascore = line.split(">");
-                        tempScore = splitedMetascore[1].substring(0, 2);
+                        tempScore = splitedMetascore[1].split("<")[0];
 
                         returnList.add(new GameObject(tempName.trim(), platform, Integer.parseInt(tempScore), tempNameUrl));
                         tempName = "";
@@ -151,11 +150,9 @@ public class ParsingOperator {
                     }
                     if(line.contains("<span class=\"flipper next\"><a class=\"action\" rel=\"next\" href=\""))
                     {
-                        nextPage = true;
                         String[] split = line.split("page=");
                         String[] numberSplit = split[1].split("\"");
                         nextPageNumber = Integer.parseInt(numberSplit[0]);
-
                     }
                 }
                 ImmutableCollection<GameObject> gameObjects = ImmutableSet.copyOf(returnList);

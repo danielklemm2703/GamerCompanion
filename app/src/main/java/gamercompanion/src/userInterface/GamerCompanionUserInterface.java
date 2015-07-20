@@ -1,6 +1,7 @@
 package gamercompanion.src.userInterface;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
@@ -19,6 +20,8 @@ import gamercompanion.src.dataOperator.PluginOperator;
 import static gamercompanion.src.error.ErrorUtil.*;
 
 import static gamercompanion.src.synchronizer.Synchronizer.*;
+
+import gamercompanion.src.synchronizer.Synchronizer;
 import gamercompanion.src.userInterface.interfaceTools.StableArrayAdapter;
 import gamercompanion.src.utils.Unit;
 import gamercompanion.src.utils.tryUtil.Try;

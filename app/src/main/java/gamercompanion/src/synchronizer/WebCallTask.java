@@ -53,6 +53,7 @@ public class WebCallTask extends AsyncTask<Void, Void, String> {
         HttpGet httpGet = new HttpGet(_webCall.getUrl());
         String text = null;
         try {
+            Synchronizer.registerTask();
             HttpResponse response = httpClient.execute(httpGet, localContext);
 
             HttpEntity entity = response.getEntity();
@@ -75,6 +76,7 @@ public class WebCallTask extends AsyncTask<Void, Void, String> {
             {
                 showWarning("the webcall "+_webCall.getUrl()+" failed!: "+unitTry.failure().getMessage());
             }
+            Synchronizer.finishTask();
         }
         else
         {

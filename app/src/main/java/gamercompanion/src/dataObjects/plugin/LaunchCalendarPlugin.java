@@ -4,11 +4,13 @@ import com.google.common.base.Supplier;
 
 import gamercompanion.src.activities.LaunchCalendarMenu;
 import gamercompanion.src.activities.controlling.ControlledActivity;
+import gamercompanion.src.dataOperator.PlatformOperator;
+import gamercompanion.src.utils.Platform;
 import gamercompanion.src.utils.Unit;
 import gamercompanion.src.utils.tryUtil.Try;
 
 /**
- * Created by dklemm on 14.07.15.
+ * provides all infos of the launchCalendar plugin
  */
 public class LaunchCalendarPlugin extends Plugin {
     public LaunchCalendarPlugin(String pluginName, String propertyName) {
@@ -20,7 +22,11 @@ public class LaunchCalendarPlugin extends Plugin {
         return Try.of(new Supplier<Unit>() {
             @Override
             public Unit get() {
-                return null;
+                for(Platform p : PlatformOperator.platformsToTrack())
+                {
+                    //TODO Execute the according tasks
+                }
+               return Unit.VALUE;
             }
         });
     }
